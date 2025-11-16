@@ -16,3 +16,8 @@ management:
     web:
       exposure:
         include: "health,info" # This exposes only the following Spring Boot Actuator endpoints over HTTP -> /actuator/health, /actuator/info.
+
+
+logging:
+  level:
+    root: INFO

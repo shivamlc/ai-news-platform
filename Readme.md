@@ -54,10 +54,3 @@
 
 ---
 For more details, see the official Spring Boot and Spring Cloud documentation on multi-module Maven projects.
-
-
-# Utility commands
-- kill the process running on port 8071:
-```bash
-kill -9 $(lsof -ti:8071)
-```
