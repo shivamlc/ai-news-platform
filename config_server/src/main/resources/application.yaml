@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: config_server (default)
+  cloud:
+    config:
+        server:
+            git:
+                uri: https://github.com/shivamlc/ai-news-platform-config.git
+                default-label: main # Set the default branch to 'main'
+                timeout: 50000 # Set connection timeout to 50000 milliseconds
+                clone-on-start: true # Clone the repository on startup; otherwise, it clones on first request which can delay responses
+                force-pull: true # Force pull the latest changes in all local repos of config server repo on each request
+                basedir: /tmp/config-repos # Local directory to store cloned repositories
+                search-paths: # Define subdirectories to search for configuration files
+                  - user_profile
+
+
+    profiles:
+        active: git # Activate the 'git' profile for configuration
+
+
+# config server runs at port 8071
+server:
+  port: 8071
+
+# These settings are commonly used for easier monitoring and debugging in development or internal environments. 
+# For production, you may want to restrict endpoint exposure for security.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # This exposes all Spring Boot Actuator endpoints over HTTP (e.g., /actuator/health, /actuator/info, etc.).
+  endpoint:
+    health:
+      show-details: always # This configures the /actuator/health endpoint to always show detailed health information, not just the overall status. This is useful for debugging and monitoring, as you’ll see details about each health indicator (e.g., disk space, database, config server status).

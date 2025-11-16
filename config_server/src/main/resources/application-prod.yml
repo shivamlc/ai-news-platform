@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: config_server
+    retry:
+      enabled: true
+    cloud:
+        config:
+            server:
+                git:
+                    timeout: 5000
+            fail-fast: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info" # This exposes only the following Spring Boot Actuator endpoints over HTTP -> /actuator/health, /actuator/info.
