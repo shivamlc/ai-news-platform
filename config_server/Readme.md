@@ -115,3 +115,4 @@ Response:
 - Config server can have diff application properties in diff env. Here we have 4 env: default, dev, qa , prod. 
 - For each env, config server can read configs from separate config repos. In our case, we have one repo for all envs.
 - In our current setup, for every profile, config server will load all configs for all services (declared using search paths) for all envs. If we had diff config repo for each env, and each config repo had configs for services only for that particular env, then for each profile, config server would pull up profile specific env vars for every service.
+- On startup, config server, clones config repo locally.
