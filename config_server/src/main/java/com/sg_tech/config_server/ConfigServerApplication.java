@@ -1,13 +1,13 @@
-package com.sg_tech.ai_news_platform;
+package com.sg_tech.config_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AiNewsPlatformApplication {
+public class ConfigServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AiNewsPlatformApplication.class, args);
+		SpringApplication.run(ConfigServerApplication.class, args);
 	}
 
 }
