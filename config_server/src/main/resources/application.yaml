@@ -18,6 +18,9 @@ spring:
     profiles:
         active: git # Activate the 'git' profile for configuration
 
+# decrypts encrypted properties from config repo using the specified key
+encrypt:
+    key: ${CONFIG_ENCRYPTION_KEY:9357dc78abbed674f3192e12602b483265bb66a0078c0f2a4b2d9fcb18b9ea2c} # Use the ENCRYPTION_KEY environment variable or default if not set
 
 # config server runs at port 8071
 server:

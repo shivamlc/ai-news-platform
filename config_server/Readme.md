@@ -51,6 +51,8 @@ Common actuator endpoints include:
 You can see the full list by visiting /actuator in your running application.
 
 # Endpoints for checking client service configs in various profiles (eg: user_profile service)
+- Whenever the endpoints below are accessed by microservice, config server pulls latest configs from config repo instead of pulling configs from local cache.
+- Microservices hit the endpoints below at the time of service startup.
 
 - `http://localhost:8071/user_profile/dev` - user_profiles service configs in dev profile
 Response:
@@ -116,3 +118,33 @@ Response:
 - For each env, config server can read configs from separate config repos. In our case, we have one repo for all envs.
 - In our current setup, for every profile, config server will load all configs for all services (declared using search paths) for all envs. If we had diff config repo for each env, and each config repo had configs for services only for that particular env, then for each profile, config server would pull up profile specific env vars for every service.
 - On startup, config server, clones config repo locally.
+
+# Encryption and Decryption of properties from config repo
+- Get an encryption key (rsndom key or generated online, eg: https://generate-random.org/encryption-keys)
+- Provide encryption key in application.yaml (hardcoded or thru env var)
+- This encryption key is used to encrypt plain text values of properties in config repo and same key is used to decrypt encrypted value at the config server end. This is explained below:
+- Say, 'user_profile' service has a property called, 'user_password' in application.yml of user_profile in config repo.
+- First, get encrypted value of 'user_password' by sending POST request to `https://<config_server_address>:<port>/encrypt` and add the the value of 'user_password' as raw text in request body of this post request. The response will be a encrypted value of 'user_password'.
+- In config repo, replace actual value of user_profile with encrypted value of 'user_password' in the following format: "{cipher}<encrypted_value_of_user_password>" 
+- {cipher} denotes that value in "" is not string but an encrypted value of some plain text value.
+- Send POST request to `https://<config_server_address>:<port>/decrypt` and add the encrypted value of 'user_password' as raw text in request body of this post request to get the plain text value of 'user_password'.
+
+# Refresh of configurations at runtime
+- How to refresh configuration properties in micro-services w/o restarting micro-services instances?
+- For this, its important that individual micro-services have spring boot actuator dependencies defined in their pom.xml
+- The micro-service whose configurations depend on config server, must have config properties defined using `@ConfigurationProperties` annotated Dto 
+- Enable actuator endpoints in the microservice, by adding the following in application.yaml. We expose actuator refresh endpoint by doing so
+```
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # This exposes all Spring Boot Actuator endpoints over HTTP (e.g., /actuator/health, /actuator/info, etc.).
+```
+- The actuator refresh endpoint is used to refresh config properties in microservices. Since, microservices by themselves connect to config server only at service startup.
+- hit `https://<microservice_server_address>:<port>/actuator/refresh` and this will refresh config properties in the microservice w/o restarting the service.
+
+- There are drawbacks of this approach. This approach is not scalable. Need to manually hit actuator endpoint of micro-service to refresh configs. A micro-service can have mutiple instances and there can be 100s of microservices. Alternative approach - use of Spring Cloud Bus
+
+
+

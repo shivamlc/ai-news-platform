@@ -23,3 +23,7 @@ management:
 logging:
   level:
     root: INFO
+
+
+encrypt:
+    key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set
