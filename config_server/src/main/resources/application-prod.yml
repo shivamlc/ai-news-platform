@@ -9,6 +9,11 @@ spring:
                 git:
                     timeout: 5000
             fail-fast: true
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:}
+    port: ${SPRING_RABBITMQ_PORT:5672}
+    username: ${SPRING_RABBITMQ_USERNAME:}
+    password: ${SPRING_RABBITMQ_PASSWORD:}
 # we could have diff git repo url for config repo for each env if needed
 #            git:
 #                uri:https://github.com/shivamlc/ai-news-platform-config-prod.git               
@@ -27,10 +32,3 @@ logging:
 
 encrypt:
     key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set
-
-
-rabbitmq:
-    host: ${RABBIT_MQ_HOST:}
-    port: ${RABBIT_MQ_PORT:5672}
-    username: ${RABBIT_MQ_USERNAME:}
-    password: ${RABBIT_MQ_PASSWORD:}
