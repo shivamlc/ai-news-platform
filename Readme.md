@@ -58,5 +58,5 @@ For more details, see the official Spring Boot and Spring Cloud documentation on
 
 ## Run the AI_NEWS_PLATFORM in default profile
 ```bash
-run_app_default.sh
+bash run_app_default.sh
 ```
