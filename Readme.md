@@ -54,3 +54,9 @@
 
 ---
 For more details, see the official Spring Boot and Spring Cloud documentation on multi-module Maven projects.
+
+
+## Run the AI_NEWS_PLATFORM in default profile
+```bash
+run_app_default.sh
+```
