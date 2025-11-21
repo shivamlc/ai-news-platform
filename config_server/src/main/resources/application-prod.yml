@@ -27,3 +27,10 @@ logging:
 
 encrypt:
     key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set
+
+
+rabbitmq:
+    host: ${RABBIT_MQ_HOST:}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: ${RABBIT_MQ_USERNAME:}
+    password: ${RABBIT_MQ_PASSWORD:}

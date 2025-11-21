@@ -1,0 +1,13 @@
+services:
+  netwrok-deploy-service:
+    networks:
+      - sg_tech_ai_np
+  microservices-base-config:
+    extends:
+      service: netwrok-deploy-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    deploy:
+      resources:
+        limits:
+          memory: 700M

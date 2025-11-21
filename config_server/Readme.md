@@ -323,7 +323,7 @@ rabbitmq:
 - This should start sending events to config server when changes are pushed to config repo.  
 
 
-## Summary of Confif updates ( by Client Service or Config Server)
+## Summary of Config updates ( by Client Service or Config Server)
 ### 
 1️⃣ Config propagation from Config Server → all client services
 

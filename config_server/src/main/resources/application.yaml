@@ -36,6 +36,13 @@ management:
   endpoint:
     health:
       show-details: always # This configures the /actuator/health endpoint to always show detailed health information, not just the overall status. This is useful for debugging and monitoring, as you’ll see details about each health indicator (e.g., disk space, database, config server status).
+      probes:
+        enabled: true
+  health:
+    liveness-state: # determines if the application is alive
+        enabled: true #localhost:8071/actuator/health/liveness
+    readiness-state: # determines if the application is ready to accept/serve network requests
+        enabled: true #localhost:8071/actuator/health/readiness
 
 
 logging:
