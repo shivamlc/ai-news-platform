@@ -32,7 +32,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*" # This exposes all Spring Boot Actuator endpoints over HTTP (e.g., /actuator/health, /actuator/info, etc.).
+        include: "*" # This exposes all Spring Boot Actuator endpoints over HTTP (e.g., /actuator/health, /actuator/info, /actuator/bus/refresh, etc.).
   endpoint:
     health:
       show-details: always # This configures the /actuator/health endpoint to always show detailed health information, not just the overall status. This is useful for debugging and monitoring, as you’ll see details about each health indicator (e.g., disk space, database, config server status).
@@ -44,3 +44,9 @@ logging:
     root: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest" #default username
+    password: "password" # password

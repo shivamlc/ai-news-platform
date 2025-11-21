@@ -1,3 +1,9 @@
 spring:
   application:
     name: config_server (dev)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,busrefresh" # This exposes only the following Spring Boot Actuator endpoints over HTTP -> /actuator/health, /actuator/info, /actuator/busrefresh.
