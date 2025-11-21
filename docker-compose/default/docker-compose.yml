@@ -1,8 +1,9 @@
 services:
   rabbit_mq:
     image: rabbitmq:4-management
-    hodstname: rabbit_mq
+    hostname: rabbit_mq
     container_name: ai_np_config_server_rabbitmq
+    # command: /bin/bash -c "chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie && chmod 400 /var/lib/rabbitmq/.erlang.cookie && rabbitmq-server"
     ports:
       - "5672:5672"   # RabbitMQ default port
       - "15672:15672" # RabbitMQ Management UI port
@@ -18,7 +19,7 @@ services:
 
 
   config_server:
-    image: sg_tech/config_server:v1
+    image: sgaurtech/config_server:v1 # use the built image from docker hub
     container_name: ai_np_config_server
     ports:
       - "8071:8071"
@@ -36,3 +37,7 @@ services:
       service: microservices-base-config
 
   #TODO: add other common services like eureka server, client service, etc if needed in future
+
+networks:
+  sg_tech_ai_np:
+    driver: bridge
