@@ -281,6 +281,7 @@ hookdeck login
 hookdeck listen [PORT] <connection_name>
 ```
 Replace [PORT] with port number of config server runnung locally. <connection_name> is the name provided in previous step.
+- Eg: ```hookdeck listen 8071 ai-news-platform-config```
 - Any changes pushed to config repo will create events, and will be visible on hoockdeck deashboard and the local terminal running the hookdeck connection.
 
 ### Following applies when config server does not run on localhost

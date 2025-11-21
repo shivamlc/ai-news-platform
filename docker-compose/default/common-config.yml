@@ -7,6 +7,7 @@ services:
       service: netwrok-deploy-service
     environment:
       - SPRING_PROFILES_ACTIVE=default
+      - SPRING_RABBITMQ_HOST=rabbit_mq # same as  need to provide this host name in default profile as well becoz in docker, config server and rabbit mq run on different containers
     deploy:
       resources:
         limits:
