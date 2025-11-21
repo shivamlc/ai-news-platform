@@ -39,5 +39,5 @@ services:
   #TODO: add other common services like eureka server, client service, etc if needed in future
 
 networks:
-  sg_tech_ai_np_default:
+  sg_tech_ai_np_dev:
     driver: bridge

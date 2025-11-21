@@ -13,10 +13,15 @@ spring:
                 basedir: /tmp/config-repos # Local directory to store cloned repositories
                 search-paths: # Define subdirectories to search for configuration files
                   - user_profile
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: "guest" #default username
+    password: "password" # password
 
 
-    profiles:
-        active: git # Activate the 'git' profile for configuration
+  profiles:
+      active: git # Activate the 'git' profile for configuration
 
 # decrypts encrypted properties from config repo using the specified key
 encrypt:
@@ -51,9 +56,3 @@ logging:
     root: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
-
-rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest" #default username
-    password: "password" # password
