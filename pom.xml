@@ -16,6 +16,7 @@
     <!-- Parent POM should NOT extend spring-boot-starter-parent -->
     <modules>
         <module>config_server</module>
+        <module>eureka_server</module>
     </modules>
 
     <dependencyManagement>
