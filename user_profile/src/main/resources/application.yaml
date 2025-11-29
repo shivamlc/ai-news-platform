@@ -2,9 +2,9 @@ server:
   port: 8080
 
 config_server:
-  instanc:
-    host: ${CONFIG_SERVER_HOST:localhost}
-    port: ${CONFIG_SERVER_PORT:8071}
+  instance:
+    host: ${CONFIG_SERVER_INSTANCE_HOST:localhost}
+    port: ${CONFIG_SERVER_INSTANCE_PORT:8071}
 spring:
   application:
     name: user_profile
