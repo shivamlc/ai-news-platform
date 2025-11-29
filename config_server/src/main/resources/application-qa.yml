@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: config_server (qa)
   rabbitmq:
     host: ${SPRING_RABBITMQ_HOST:}
     port: ${SPRING_RABBITMQ_PORT:5672}
@@ -8,4 +6,4 @@ spring:
     password: ${SPRING_RABBITMQ_PASSWORD:}
 
 encrypt:
-    key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set
+  key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set

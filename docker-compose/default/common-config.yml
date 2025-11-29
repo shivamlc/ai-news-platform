@@ -12,3 +12,9 @@ services:
       resources:
         limits:
           memory: 700M
+  config-server-client-config:
+    extends:
+      service: microservices-base-config
+    environment:
+      - CONFIG_SERVER_INSTANCE_HOST=config_server
+      - CONFIG_SERVER_INSTANCE_PORT=8071
