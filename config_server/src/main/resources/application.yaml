@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config_server
+    name: "config_server"
   cloud:
     config:
       server:
@@ -11,9 +11,10 @@ spring:
           clone-on-start: true # Clone the repository on startup; otherwise, it clones on first request which can delay responses
           force-pull: true # Force pull the latest changes in all local repos of config server repo on each request
           basedir: /tmp/config-repos # Local directory to store cloned repositories
-          search-paths: # Define subdirectories to search for configuration files
-            - user_profile
-            - eureka_server
+          search-paths:
+            "{application}" # Define subdirectories to search for configuration files
+            # - user_profile
+            # - eureka_server
   rabbitmq:
     host: localhost
     port: 5672

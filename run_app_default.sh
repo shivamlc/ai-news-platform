@@ -1,6 +1,13 @@
 #!/bin/bash
 # Remove local config server image
 
+# echo "Restarting docker desktop..."
+# killall Docker
+# killall com.docker.backend
+# open -a Docker
+# sleep 30
+
+
 echo "Killing all running processes"
 kill -9 $(lsof -ti:8080)
 kill -9 $(lsof -ti:8070)
@@ -11,6 +18,12 @@ docker compose -f docker-compose/default/docker-compose.yml down
 
 docker rmi sgaurtech/config_server:v1 || true
 docker rmi sgaurtech/user_profile:v1 || true
+
+# Remove all build cache
+docker builder prune -a -f
+
+# Remove dangling images
+docker image prune -f
 
 echo "Building new Docker image..."
 docker build -t sgaurtech/config_server:v1 ./config_server

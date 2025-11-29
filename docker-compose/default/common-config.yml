@@ -1,10 +1,10 @@
 services:
-  netwrok-deploy-service:
+  network-deploy-service:
     networks:
       - sg_tech_ai_np_default
   microservices-base-config:
     extends:
-      service: netwrok-deploy-service
+      service: network-deploy-service
     environment:
       - SPRING_PROFILES_ACTIVE=default
       - SPRING_RABBITMQ_HOST=rabbit_mq # same as  need to provide this host name in default profile as well becoz in docker, config server and rabbit mq run on different containers
@@ -12,9 +12,3 @@ services:
       resources:
         limits:
           memory: 700M
-  config-server-client-config:
-    extends:
-      service: microservices-base-config
-    environment:
-      - CONFIG_SERVER_INSTANCE_HOST=config_server
-      - CONFIG_SERVER_INSTANCE_PORT=8071
