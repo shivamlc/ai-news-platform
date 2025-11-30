@@ -11,15 +11,15 @@ spring:
           clone-on-start: true # Clone the repository on startup; otherwise, it clones on first request which can delay responses
           force-pull: true # Force pull the latest changes in all local repos of config server repo on each request
           basedir: /tmp/config-repos # Local directory to store cloned repositories
-          search-paths:
-            "{application}" # Define subdirectories to search for configuration files
-            # - user_profile
-            # - eureka_server
+          search-paths: # Define subdirectories to search for configuration files
+            #   # "{application}"
+            - user_profile
+          #   # - eureka_server
   rabbitmq:
     host: localhost
     port: 5672
     username: "guest" #default username
-    password: "password" # password
+    password: "guest" # password
 
   profiles:
     active: git # Activate the 'git' profile for configuration
@@ -31,6 +31,9 @@ encrypt:
 # config server runs at port 8071
 server:
   port: 8071
+  address: 0.0.0.0
+  tomcat:
+    relaxed-host-header: true
 
 # These settings are commonly used for easier monitoring and debugging in development or internal environments.
 # For production, you may want to restrict endpoint exposure for security.
@@ -54,5 +57,6 @@ logging:
   color: always
   level:
     root: DEBUG
+    org.springframework.cloud.config.server: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
