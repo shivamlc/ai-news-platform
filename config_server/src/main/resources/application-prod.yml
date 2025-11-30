@@ -1,22 +1,22 @@
 spring:
-  application:
-    name: config_server
-    retry:
-      enabled: true
-    cloud:
-        config:
-            server:
-                git:
-                    timeout: 5000
-            fail-fast: true
   rabbitmq:
     host: ${SPRING_RABBITMQ_HOST:}
     port: ${SPRING_RABBITMQ_PORT:5672}
     username: ${SPRING_RABBITMQ_USERNAME:}
     password: ${SPRING_RABBITMQ_PASSWORD:}
+
+  retry:
+    enabled: true
+  cloud:
+    config:
+      server:
+        git:
+          timeout: 5000
+      fail-fast: true
+
 # we could have diff git repo url for config repo for each env if needed
 #            git:
-#                uri:https://github.com/shivamlc/ai-news-platform-config-prod.git               
+#                uri:https://github.com/shivamlc/ai-news-platform-config-prod.git
 
 management:
   endpoints:
@@ -24,11 +24,9 @@ management:
       exposure:
         include: "health,info" # This exposes only the following Spring Boot Actuator endpoints over HTTP -> /actuator/health, /actuator/info.
 
-
 logging:
   level:
     root: INFO
 
-
 encrypt:
-    key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set
+  key: ${CONFIG_ENCRYPTION_KEY:} # Use the ENCRYPTION_KEY environment variable or default if not set

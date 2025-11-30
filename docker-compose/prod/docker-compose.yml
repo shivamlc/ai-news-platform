@@ -5,7 +5,7 @@ services:
     container_name: ai_np_config_server_rabbitmq
     # command: /bin/bash -c "chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie && chmod 400 /var/lib/rabbitmq/.erlang.cookie && rabbitmq-server"
     ports:
-      - "5672:5672"   # RabbitMQ default port
+      - "5672:5672" # RabbitMQ default port
       - "15672:15672" # RabbitMQ Management UI port
     healthcheck:
       test: "rabbitmq-diagnostics check_port_connectivity || exit 1"
@@ -17,7 +17,6 @@ services:
       file: common-config.yml # use common config file to extend common settings
       service: netwrok-deploy-service
 
-
   config_server:
     image: sgaurtech/config_server:v1 # use the built image from docker hub
     container_name: ai_np_config_server
@@ -28,6 +27,24 @@ services:
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent http://localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s # check every 10 seconds
+      timeout: 5s # time to wait for healthcheck to complete
+      retries: 5 # try 5 times before marking as unhealthy
+      start_period: 10s # start health checking after 10s of container start
+    extends:
+      file: common-config.yml
+      service: microservices-base-config
+
+  user_profile:
+    image: sgaurtech/user_profile:v1 # use the built image from docker hub
+    container_name: ai_np_user_profile
+    ports:
+      - "8080:8080"
+    depends_on:
+      config_server: # the config_server service defined above
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent http://localhost:8080/actuator/health/readiness | grep UP || exit 1"
       interval: 10s # check every 10 seconds
       timeout: 5s # time to wait for healthcheck to complete
       retries: 5 # try 5 times before marking as unhealthy

@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+# cannot use the configs below and then replace them in config.import as:  import: "optional:configserver:http://${CONFIG_SERVER_INSTANCE_HOST}:${CONFIG_SERVER_INSTANCE_PORT}/"
+# Reason: pring DOES NOT allow binding custom YAML properties into config import URLs during bootstrap.
+# Config import happens before custom properties are available.
+# So config_server.instance.host is UNRESOLVED, and Spring uses the default value → localhost.
+# config_server:
+#   instance:
+#     host: ${CONFIG_SERVER_INSTANCE_HOST:localhost}
+#     port: ${CONFIG_SERVER_INSTANCE_PORT:8071}
+spring:
+  application:
+    name: user_profile
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:default}
+    #  "configserver" below does not refer to configserver application name/docker service name.
+    #  Its a keyword used to get configs from config server
+    #  Use "optional:configserver:http://localhost:8071/" if
+    #  we still want to run our service when user_profile
+    #  service is not able to connect to config server
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8071/}
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.config: TRACE
+    org.springframework.boot.context.config: TRACE
+    org.springframework.core.env: TRACE
+    org.springframework.web.client: TRACE
+    org.springframework.http: TRACE
+    org.springframework.web.client.RestTemplate: TRACE
+    org.springframework.http.client: DEBUG
+    org.apache.http: DEBUG
+    org.apache.http.wire: DEBUG
+    org.springframework.core.env.PropertySourcesPropertyResolver: TRACE

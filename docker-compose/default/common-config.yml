@@ -1,10 +1,10 @@
 services:
-  netwrok-deploy-service:
+  network-deploy-service:
     networks:
       - sg_tech_ai_np_default
   microservices-base-config:
     extends:
-      service: netwrok-deploy-service
+      service: network-deploy-service
     environment:
       - SPRING_PROFILES_ACTIVE=default
       - SPRING_RABBITMQ_HOST=rabbit_mq # same as  need to provide this host name in default profile as well becoz in docker, config server and rabbit mq run on different containers
@@ -12,3 +12,15 @@ services:
       resources:
         limits:
           memory: 700M
+  config_client-base-config:
+    extends:
+      service: microservices-base-config
+    environment:
+      - CONFIG_SERVER_URL=http://configserver:8071/ # configserver is the docker service name of config server container service defined in docker-compose.yml
+      - SPRING_CLOUD_CONFIG_FAIL_FAST=false
+      - SPRING_CLOUD_CONFIG_REQUEST_CONNECT_TIMEOUT=10000
+      - SPRING_CLOUD_CONFIG_REQUEST_READ_TIMEOUT=10000
+      - SPRING_CLOUD_CONFIG_RETRY_MAX_ATTEMPTS=6
+      - SPRING_CLOUD_CONFIG_RETRY_INITIAL_INTERVAL=2000
+      - SPRING_CLOUD_CONFIG_RETRY_MAX_INTERVAL=3000
+      - SPRING_CLOUD_CONFIG_RETRY_MULTIPLIER=1.1
