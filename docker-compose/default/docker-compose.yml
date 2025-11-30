@@ -17,17 +17,14 @@ services:
       file: common-config.yml # use common config file to extend common settings
       service: network-deploy-service
 
-  configserver:
+  configserver: # cannot have service name as config_server because of underscore which is not allowed in docker service names by tomcat
     image: sgaurtech/config_server:v1 # use the built image from docker hub
     container_name: ai_np_config_server
-    hostname: "config_server"
     ports:
       - "8071:8071"
     depends_on:
       rabbit_mq: # the rabbit_mq service defined above
         condition: service_healthy
-    environment:
-      SPRING_APPLICATION_NAME: "config_server"
     healthcheck:
       test: "curl --fail --silent http://localhost:8071/actuator/health/readiness | grep UP || exit 1"
       interval: 10s # check every 10 seconds
@@ -46,14 +43,6 @@ services:
     depends_on:
       configserver: # the config_server service defined above
         condition: service_healthy
-    environment:
-      SPRING_APPLICATION_NAME: "user_profile"
-      CONFIG_SERVER_URL: http://configserver:8071/
-      # SPRING_CONFIG_IMPORT: "configserver:http://config_server:8071/"
-      # SPRING_CLOUD_CONFIG_URI: "http://config_server:8071"
-      # SPRING_CLOUD_CONFIG_FAIL_FAST: "false"
-      # CONFIG_SERVER_URI: "http://config_server:8071/"
-      # JAVA_TOOL_OPTIONS: "-Dspring.cloud.config.uri=http://config_server:8071"
     healthcheck:
       test: "curl --fail --silent http://localhost:8080/actuator/health/readiness | grep UP || exit 1"
       interval: 10s # check every 10 seconds
@@ -62,7 +51,7 @@ services:
       start_period: 20s # start health checking after 10s of container start
     extends:
       file: common-config.yml
-      service: microservices-base-config
+      service: config_client-base-config
 
   #TODO: add other common services like eureka server, client service, etc if needed in future
 
