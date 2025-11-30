@@ -16,7 +16,13 @@ kill -9 $(lsof -ti:8071)
 echo "Stopping and removing existing containers..."
 docker compose -f docker-compose/default/docker-compose.yml down
 
+echo "Building JAR files for all services..."
+./config_server/mvnw -f ./config_server/pom.xml clean package
+./eureka_server/mvnw -f ./eureka_server/pom.xml clean package
+./user_profile/mvnw -f ./user_profile/pom.xml clean package
+
 docker rmi sgaurtech/config_server:v1 || true
+docker rmi sgaurtech/eureka_server:v1 || true
 docker rmi sgaurtech/user_profile:v1 || true
 
 # Remove all build cache
@@ -27,6 +33,7 @@ docker image prune -f
 
 echo "Building new Docker image..."
 docker build -t sgaurtech/config_server:v1 ./config_server
+docker build -t sgaurtech/eureka_server:v1 ./eureka_server
 docker build -t sgaurtech/user_profile:v1 ./user_profile
 
 echo "Starting containers..."

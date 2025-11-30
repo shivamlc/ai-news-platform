@@ -58,6 +58,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- required for eureka client functionality -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
 		<!-- required for reading config  from config server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

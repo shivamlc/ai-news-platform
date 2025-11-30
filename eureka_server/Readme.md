@@ -27,3 +27,8 @@
 - registry acknosledges the fact that there can be multiple instance of same service active simultaneaously.
 - when service 1 needs to communicate to service 2, it gets ip address of service 2 from registry.
 - load balancing strategy is employed to evenly distribute workload among multiple instances of same microservice.
+
+## Graceful shutdown of microservices
+
+- invoke shutdown endpoint of a microservice running at 8080 -> "localhost:8080/actuator/shutdown" of
+- this call will initiate graceful shutdown process. This will make the service to de-register fromt the eureka server.

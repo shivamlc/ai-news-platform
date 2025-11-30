@@ -24,3 +24,8 @@ services:
       - SPRING_CLOUD_CONFIG_RETRY_INITIAL_INTERVAL=2000
       - SPRING_CLOUD_CONFIG_RETRY_MAX_INTERVAL=3000
       - SPRING_CLOUD_CONFIG_RETRY_MULTIPLIER=1.1
+  eureka_client-base-config:
+    extends:
+      service: config_client-base-config
+    environment:
+      - EUREKA_SERVER_URL=http://eurekaserver:8070/eureka/ # eurekaserver is the docker service name of eureka server container service defined in docker-compose.yml

@@ -35,13 +35,31 @@ services:
       file: common-config.yml
       service: microservices-base-config
 
+  eurekaserver:
+    image: sgaurtech/eureka_server:v1 # use the built image from docker hub
+    container_name: ai_np_eureka_server
+    ports:
+      - "8070:8070"
+    depends_on:
+      configserver: # the config_server service defined above
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent http://localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s # check every 10 seconds
+      timeout: 5s # time to wait for healthcheck to complete
+      retries: 5 # try 5 times before marking as unhealthy
+      start_period: 20s # start health checking after 10s of container start
+    extends:
+      file: common-config.yml
+      service: config_client-base-config
+
   user_profile:
     image: sgaurtech/user_profile:v1 # use the built image from docker hub
     container_name: ai_np_user_profile
     ports:
       - "8080:8080"
     depends_on:
-      configserver: # the config_server service defined above
+      eurekaserver: # the eureka_server service defined above
         condition: service_healthy
     healthcheck:
       test: "curl --fail --silent http://localhost:8080/actuator/health/readiness | grep UP || exit 1"
@@ -51,7 +69,7 @@ services:
       start_period: 20s # start health checking after 10s of container start
     extends:
       file: common-config.yml
-      service: config_client-base-config
+      service: eureka_client-base-config
 
   #TODO: add other common services like eureka server, client service, etc if needed in future
 
