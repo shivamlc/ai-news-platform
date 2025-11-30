@@ -1,3 +1,6 @@
+# Deprecated: Individual Dockerfile for user_profile service
+# Use docker_build_image_service.sh to build images for all services instead.
+
 # Generates a Docker image for the user_profile service
 FROM eclipse-temurin:21-jdk-jammy
 COPY target/user_profile-0.0.1-SNAPSHOT.jar user_profile-0.0.1-SNAPSHOT.jar
