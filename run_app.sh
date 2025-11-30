@@ -12,14 +12,14 @@ ENV=${ENV:-default}
 # open -a Docker
 # sleep 30
 
+echo "Stopping and removing existing containers..."
+docker compose -f docker-compose/$ENV/docker-compose.yml down
 
 echo "Killing all running processes"
 kill -9 $(lsof -ti:8080)
 kill -9 $(lsof -ti:8070)
 kill -9 $(lsof -ti:8071)
 
-echo "Stopping and removing existing containers..."
-docker compose -f docker-compose/$ENV/docker-compose.yml down
 
 # Deprecated: Build JAR files for all services from scratch indidually
 # echo "Building JAR files for all services..."
@@ -44,8 +44,8 @@ docker image prune -f
 # Takes the service name and (optionally) the version as arguments.
 # If the version is not provided, it extracts it from the service's pom.xml file.
 # Builds the Docker image with the correct version.
-./docker_build_image_service.sh config_server
-./docker_build_image_service.sh eureka_server
+./docker_build_image_service.sh config_server 0.0.1-SNAPSHOT
+./docker_build_image_service.sh eureka_server 0.0.1-SNAPSHOT
 ./docker_build_image_service.sh user_profile 0.0.1-SNAPSHOT
 
 echo "Starting containers..."
