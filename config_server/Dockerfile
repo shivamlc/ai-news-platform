@@ -1,22 +1,7 @@
 # Generates a Docker image for the config server
-# FROM eclipse-temurin:21-jdk-jammy
-# COPY target/config_server-0.0.1-SNAPSHOT.jar config_server-0.0.1-SNAPSHOT.jar
-# ENTRYPOINT [ "java", "-jar", "config_server-0.0.1-SNAPSHOT.jar" ]
-
-
-# Stage 1: Build the JAR
-FROM maven:3.9.6-eclipse-temurin-21 AS build
-WORKDIR /app
-COPY config_server/ ./config_server/
-WORKDIR /app/config_server
-RUN ./mvnw clean package -DskipTests
-
-# Stage 2: Run the JAR
 FROM eclipse-temurin:21-jdk-jammy
-WORKDIR /app
-COPY --from=build /app/config_server/target/config_server-0.0.1-SNAPSHOT.jar config_server-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "config_server-0.0.1-SNAPSHOT.jar"]
-
+COPY target/config_server-0.0.1-SNAPSHOT.jar config_server-0.0.1-SNAPSHOT.jar
+ENTRYPOINT [ "java", "-jar", "config_server-0.0.1-SNAPSHOT.jar" ]
 
 
 
