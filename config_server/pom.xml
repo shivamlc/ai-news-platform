@@ -72,6 +72,32 @@
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>9.0</version>
+		</dependency>
+		<!-- New Relic Java APM Agent -->
+		<dependency>
+			<groupId>com.newrelic.agent.java</groupId>
+			<artifactId>newrelic-java</artifactId>
+			<version>8.25.0</version>
+			<scope>provided</scope>
+			<type>zip</type>
+		</dependency>
+		<!-- New Relic Logback JSON Logging (Structured Logs) -->
+		<!-- https://mvnrepository.com/artifact/com.newrelic.logging/logback -->
+		<dependency>
+			<groupId>com.newrelic.logging</groupId>
+			<artifactId>logback</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.42</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -97,6 +123,23 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
+					</execution>
+					<execution>
+						<id>unpack-newrelic</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeGroupIds>com.newrelic.agent.java</includeGroupIds>
+							<includeArtifactIds>newrelic-java</includeArtifactIds>
+							<!-- you can optionally exclude files -->
+							<!-- <excludes>**/newrelic.yml</excludes> -->
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

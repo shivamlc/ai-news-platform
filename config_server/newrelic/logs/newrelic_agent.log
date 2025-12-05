@@ -1,0 +1,55 @@
+2025-12-05T15:37:03,456+1000 [97850 1] com.newrelic INFO: Writing to New Relic log file: /Users/shivamgaur/Desktop/projects/2025-july/ai_news_platform/config_server/newrelic/logs/newrelic_agent.log
+2025-12-05T15:37:03,457+1000 [97850 1] com.newrelic INFO: JRE vendor Eclipse Adoptium version 21.0.2
+2025-12-05T15:37:03,457+1000 [97850 1] com.newrelic INFO: JVM vendor Eclipse Adoptium OpenJDK 64-Bit Server VM version 21.0.2+13-LTS
+2025-12-05T15:37:03,457+1000 [97850 1] com.newrelic INFO: OS Mac OS X version 15.7.2 arch x86_64
+2025-12-05T15:37:03,457+1000 [97850 1] com.newrelic INFO: Agent Host: shivams-MacBook-Pro.local IP: 127.0.0.1
+2025-12-05T15:37:03,457+1000 [97850 1] com.newrelic INFO: New Relic Agent v8.25.0 is initializing...
+2025-12-05T15:37:04,155+1000 [97850 36] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2025-12-05T15:37:05,150+1000 [97850 1] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2025-12-05T15:37:05,155+1000 [97850 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2025-12-05T15:37:05,701+1000 [97850 1] com.newrelic INFO: Setting audit_mode to false
+2025-12-05T15:37:05,903+1000 [97850 1] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/shivamgaur/Desktop/projects/2025-july/ai_news_platform/config_server/newrelic/./newrelic.yml
+2025-12-05T15:37:05,911+1000 [97850 1] com.newrelic INFO: New Relic Agent v8.25.0 has started
+2025-12-05T15:37:05,911+1000 [97850 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@67784306
+2025-12-05T15:37:05,912+1000 [97850 1] com.newrelic INFO: Premain startup complete in 3,562ms
+2025-12-05T15:37:05,915+1000 [97850 1] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2025-12-05T15:37:13,715+1000 [97850 1] com.newrelic INFO: Server Info: Apache Tomcat/10.1.48
+2025-12-05T15:37:23,593+1000 [97850 28] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2025-12-05T15:38:31,839+1000 [98442 1] com.newrelic INFO: Writing to New Relic log file: /Users/shivamgaur/Desktop/projects/2025-july/ai_news_platform/config_server/newrelic/logs/newrelic_agent.log
+2025-12-05T15:38:31,839+1000 [98442 1] com.newrelic INFO: JRE vendor Eclipse Adoptium version 21.0.2
+2025-12-05T15:38:31,840+1000 [98442 1] com.newrelic INFO: JVM vendor Eclipse Adoptium OpenJDK 64-Bit Server VM version 21.0.2+13-LTS
+2025-12-05T15:38:31,840+1000 [98442 1] com.newrelic INFO: OS Mac OS X version 15.7.2 arch x86_64
+2025-12-05T15:38:31,840+1000 [98442 1] com.newrelic INFO: Agent Host: shivams-MacBook-Pro.local IP: 127.0.0.1
+2025-12-05T15:38:31,841+1000 [98442 1] com.newrelic INFO: New Relic Agent v8.25.0 is initializing...
+2025-12-05T15:38:32,489+1000 [98442 36] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2025-12-05T15:38:33,352+1000 [98442 1] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2025-12-05T15:38:33,355+1000 [98442 1] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2025-12-05T15:38:33,665+1000 [98442 1] com.newrelic INFO: Setting audit_mode to false
+2025-12-05T15:38:33,808+1000 [98442 1] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/shivamgaur/Desktop/projects/2025-july/ai_news_platform/config_server/newrelic/./newrelic.yml
+2025-12-05T15:38:33,813+1000 [98442 1] com.newrelic INFO: New Relic Agent v8.25.0 has started
+2025-12-05T15:38:33,813+1000 [98442 1] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@67784306
+2025-12-05T15:38:33,813+1000 [98442 1] com.newrelic INFO: Premain startup complete in 2,935ms
+2025-12-05T15:38:33,815+1000 [98442 1] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2025-12-05T15:38:40,076+1000 [98442 1] com.newrelic INFO: Server Info: Apache Tomcat/10.1.48
+2025-12-05T15:38:48,825+1000 [98442 54] com.newrelic INFO: Host name is shivams-MacBook-Pro.local, display host shivams-MacBook-Pro.local for application config_server
+2025-12-05T15:38:48,827+1000 [98442 54] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2025-12-05T15:38:49,802+1000 [98442 54] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2025-12-05T15:38:50,831+1000 [98442 54] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2025-12-05T15:38:50,831+1000 [98442 54] com.newrelic INFO: Agent run id: BQ9ZUZPQ-HI-AGp31iJ0jK5pMnAwAAIBAAAnIQEAAYCKAgQidKAlAwAGOC4yNS4wABlzaGl2YW1zLU1hY0Jvb2stUHJvLmxvY2FsAA1jb25maWdfc2VydmVy
+2025-12-05T15:38:50,832+1000 [98442 54] com.newrelic INFO: Agent 98442@shivams-MacBook-Pro.local/config_server connected to collector.newrelic.com:443
+2025-12-05T15:38:50,832+1000 [98442 54] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/6977494/applications/578068517
+2025-12-05T15:38:50,834+1000 [98442 54] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-12-05T15:38:50,834+1000 [98442 54] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-12-05T15:38:50,834+1000 [98442 54] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-12-05T15:38:50,835+1000 [98442 54] com.newrelic INFO: The root sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:50,835+1000 [98442 54] com.newrelic INFO: The remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:50,835+1000 [98442 54] com.newrelic INFO: The remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:50,837+1000 [98442 54] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2025-12-05T15:38:50,837+1000 [98442 54] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2025-12-05T15:38:50,837+1000 [98442 54] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2025-12-05T15:38:50,838+1000 [98442 54] com.newrelic INFO: The root sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:50,838+1000 [98442 54] com.newrelic INFO: The remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:50,838+1000 [98442 54] com.newrelic INFO: The remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2025-12-05T15:38:51,673+1000 [98442 54] com.newrelic INFO: Real user monitoring is enabled for application config_server. Auto instrumentation is enabled.
+2025-12-05T15:38:51,674+1000 [98442 54] com.newrelic INFO: Updating shared Adaptive Sampler sampling target to 120
+2025-12-05T15:38:51,674+1000 [98442 54] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
