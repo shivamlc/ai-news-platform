@@ -68,7 +68,6 @@ For more details, see the official Spring Boot and Spring Cloud documentation on
 >>> bash run_app_default.sh
 ```
 
-NRL: dc493a3eb8e786129c4367d1bd80982bFFFFNRAL
 java -javaagent:/full/path/to/newrelic.jar -jar app.jar
 
 Connect your logs and infrastructure
