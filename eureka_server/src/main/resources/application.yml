@@ -1,8 +1,8 @@
 spring:
   application:
-    name: eureka_server (default)
+    name: eureka_server
   config:
-    import: "optional:configserver:http://localhost:8071/"
+    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8071/}
 
 # These settings are commonly used for easier monitoring and debugging in development or internal environments.
 # For production, you may want to restrict endpoint exposure for security.

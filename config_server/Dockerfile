@@ -3,6 +3,8 @@ FROM eclipse-temurin:21-jdk-jammy
 COPY target/config_server-0.0.1-SNAPSHOT.jar config_server-0.0.1-SNAPSHOT.jar
 ENTRYPOINT [ "java", "-jar", "config_server-0.0.1-SNAPSHOT.jar" ]
 
+
+
 # To build the Docker image, run:
 # docker build -t sgaurtech/config_server:v1 .
 # To run the Docker container, run:
