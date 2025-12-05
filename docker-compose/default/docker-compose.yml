@@ -25,6 +25,14 @@ services:
     depends_on:
       rabbit_mq: # the rabbit_mq service defined above
         condition: service_healthy
+    environment:
+      - NEW_RELIC_APP_NAME=ai_np_config_server (default)
+    command: >
+      java -javaagent:/newrelic/newrelic.jar
+       -Dnewrelic.config.file=/newrelic/newrelic.yml
+       -jar app.jar
+    volumes:
+      - ./newrelic:/newrelic
     healthcheck:
       test: "curl --fail --silent http://localhost:8071/actuator/health/readiness | grep UP || exit 1"
       interval: 10s # check every 10 seconds

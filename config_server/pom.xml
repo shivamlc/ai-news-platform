@@ -73,11 +73,30 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>9.0</version>
+		</dependency>
+		<!-- New Relic Java APM Agent -->
+		<dependency>
 			<groupId>com.newrelic.agent.java</groupId>
 			<artifactId>newrelic-java</artifactId>
 			<version>8.25.0</version>
 			<scope>provided</scope>
 			<type>zip</type>
+		</dependency>
+		<!-- New Relic Logback JSON Logging (Structured Logs) -->
+		<!-- https://mvnrepository.com/artifact/com.newrelic.logging/logback -->
+		<dependency>
+			<groupId>com.newrelic.logging</groupId>
+			<artifactId>logback</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.42</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

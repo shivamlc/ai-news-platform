@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+    <!-- ==== Spring Boot Logback Extensions ==== -->
+    <springProperty scope="context" name="LOG_LEVEL_ROOT" source="logging.level.root"
+        defaultValue="INFO" />
+
+    <!-- ==== Pattern you specified ==== -->
+    <property name="CONSOLE_LOG_PATTERN"
+        value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" />
+
+    <!-- ==== Console Appender (with colour) ==== -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ==== New Relic Log API (JSON Logs to STDOUT) ==== -->
+    <!-- New Relic log forwarding picks logs from STDOUT -->
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdcKeyName>trace.id</includeMdcKeyName>
+            <includeMdcKeyName>span.id</includeMdcKeyName>
+            <includeMdcKeyName>service.name</includeMdcKeyName>
+
+            <!-- NR-compatible fields -->
+            <customFields>
+                {"service":"${spring.application.name:-unknown-service}"}
+            </customFields>
+        </encoder>
+    </appender>
+
+    <!-- ==== LOGGING LEVELS ==== -->
+    <root level="${LOG_LEVEL_ROOT}">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="JSON" />
+    </root>
+
+    <!-- Optional: per-package logging -->
+    <logger name="org.springframework.cloud.config.server" level="DEBUG" />
+    <logger name="org.springframework.web" level="INFO" />
+
+</configuration>

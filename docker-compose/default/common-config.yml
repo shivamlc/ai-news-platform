@@ -6,6 +6,7 @@ services:
     extends:
       service: network-deploy-service
     environment:
+      - NEW_RELIC_LICENSE_KEY="dc493a3eb8e786129c4367d1bd80982bFFFFNRAL"
       - SPRING_PROFILES_ACTIVE=default
       - SPRING_RABBITMQ_HOST=rabbit_mq # same as  need to provide this host name in default profile as well becoz in docker, config server and rabbit mq run on different containers
     deploy:

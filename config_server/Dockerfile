@@ -1,7 +1,8 @@
 # Generates a Docker image for the config server
 FROM eclipse-temurin:21-jdk-jammy
 COPY target/config_server-0.0.1-SNAPSHOT.jar config_server-0.0.1-SNAPSHOT.jar
-ENTRYPOINT [ "java", "-jar", "config_server-0.0.1-SNAPSHOT.jar" ]
+COPY newrelic/ /config_server/newrelic/
+ENTRYPOINT ["java","-javaagent:/config_server/newrelic/newrelic.jar","-Dnewrelic.config.file=/config_server/newrelic/newrelic.yml","-jar", "config_server-0.0.1-SNAPSHOT.jar"]
 
 
 
